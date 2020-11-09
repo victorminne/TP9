@@ -1,4 +1,4 @@
-from random import randnt
+from random import randint
 
 """Give a name and make comments"""
 
@@ -20,7 +20,7 @@ def choose(nbColors=6,nbPawns=4):
 
         selected = input('Input your proposal: ')
 
-        if len(selecte) == nbPawns:
+        if len(selected) == nbPawns:
 
             selected = [int(x) for x in list(selected)]
 
@@ -48,7 +48,7 @@ def evaluation(selected,cache):
 
     copySelected,copyCache = list(selected),list(cache)
 
-    for i in range(len(cache):
+    for i in range(len(cache)):
 
         if copySelected[i] == copyCache[i]:
 
@@ -58,7 +58,7 @@ def evaluation(selected,cache):
 
     for i in range(len(cache)):
 
-        for j on range(len(cache)):
+        for j in range(len(cache)):
 
             if (copySelected[i] == copyCache[j]) and (copySelected[i] != -1):
 
@@ -66,7 +66,7 @@ def evaluation(selected,cache):
 
                 copySelected[i],copyCache[j] = -1,-1
 
-    retun WellPut,Misplaced
+    return WellPut,Misplaced
 
  
 
@@ -82,7 +82,7 @@ def display(well,bad):
 
 def displayCache(cache):
 
-    for x on cache:
+    for x in cache:
 
         print(x,end='')
 
@@ -132,7 +132,7 @@ def master():
 
             tries += 1
 
-    if tries = nbTry+1:
+    if tries == nbTry+1:
 
         print("lost, we had to find:",end=' ')
 
@@ -150,13 +150,13 @@ def master():
 
 def chooseGame(S,possibles,results,tries):
 
-    if tries=1:
+    if tries==1:
 
         return [1,1,2,2]
 
-    elif len(S)==1 
+    elif len(S)==1 :
 
-        retrn S.pop()
+        return S.pop()
 
     else:
 
@@ -168,40 +168,30 @@ def chooseGame(S,possibles,results,tries):
 
 def chooseGameBis(S,possibles,results,tries):
 
-    if tries = 1:
-
+    if tries == 1:
         return [1,1,2,2]
 
     elif len(S)==1:
-
         return S.pop()
 
-    else
-
+    else:
         Max = 0
 
-        for x in possibles:
-
+        for i in possibles:
             Min = 1297
 
             for res in results:
-
                 nb = 0
 
                 for p in S:
-
-                    if evaluation(p,x)!==res:
-
+                    if evaluation(p,x)!=res:
                         nb+=1
 
                 if nb<Min:
-
                     Min=nb
 
             if Max<Min:
-
                 Max = Min
-
                 xx = x
 
         return xx
@@ -224,11 +214,11 @@ def game():
 
     possible = frozenset(S)
 
-    results = frozenset((well,bad) for well in range(5) for bad on range(5-well) if not (well==3 and bad=1))
+    results = frozenset((well,bad) for well in range(5) for bad in range(5-well) if not (well==3 and bad==1))
 
     while notFound and (tries<=10):
 
-        prin('try',tries)
+        print('try',tries)
 
         selected = chooseGameBis(S,possibles, results,)
 
@@ -242,13 +232,13 @@ def game():
 
         display(well,bad)
 
-        if well = nbP:
+        if well == nbP:
 
             notFound = False
 
         else:
 
-            tries +== 1
+            tries += 1
 
             S.difference_update(set(coup for coup in S if (well,bad) != evaluation(coup,selected)))
 
