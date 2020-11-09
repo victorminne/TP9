@@ -92,13 +92,22 @@ def displayCache(cache):
 
 def gameParameters():
 
-    nbC = int(input('Input the number of colors: '))
+    nbC = input('Input the number of colors: ')
 
-    nbP = int(input(' Enter the length of the sequence to guess: '))
+    nbP = input(' Enter the length of the sequence to guess: ')
 
-    nbTry = int(input(' Enter the number of trials: '))
+    nbTry = input(' Enter the number of trials: ')
 
-    return nbC,nbP,nbTry
+    while not nbC.isdigit() :
+        nbC = int(input('Input the number of colors: '))
+
+    while not nbP.isdigit() :
+        nbP = int(input('Input the number of colors: '))
+
+    while not nbTry.isdigit() :
+        nbTry = int(input('Input the number of colors: '))
+        
+    return int(nbC),int(nbP),int(nbTry)
 
  
 
